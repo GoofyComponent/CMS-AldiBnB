@@ -2,6 +2,11 @@ body{
     color: #3A405A;
 }
 
+#container{
+    margin: auto;
+    height: 100%;
+}
+
 #search_field{
     position: sticky;
     top: 5vh;

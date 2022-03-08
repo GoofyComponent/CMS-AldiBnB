@@ -85,10 +85,11 @@ a:hover {
 /* Basics */
 body{
 	font-family: 'Manrope', sans-serif;
+    min-height: 100vh;
 }
 
 header{
-    height: 8vh;
+    height: 11vh;
     display: flex;
     flex-direction: column;
     background-color: #DCDDD6;
@@ -103,8 +104,9 @@ header>div:first-child{
     width: 95%;
 }
 
-header>div:first-child>h1{
+header>div:first-child>a:first-child{
     font-size: 1.5em;
+    font-weight: bold;
 }
 
 .nav-menu{

@@ -1,0 +1,32 @@
+#user-place>h2 {
+    width: 85%;
+    margin: 1em auto;
+    font-size: 1.5em;
+}
+
+#user-place>div {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* grid-template-rows: repeat(5, 1fr); */
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    width: 75%;
+    margin: 2em auto;
+    align-items: center;
+}
+
+#user-place>div>a>div>img {
+    border-radius: 47px;
+}
+
+#user-place>div>a>div {
+    height: 100%;
+}
+
+#user-place>div>a>div>p {
+    position: relative;
+    top: -2.5em;
+    left: 10%;
+    color: #DCDDD6;
+    font-weight: 600;
+}
