@@ -12,8 +12,8 @@
     font-size: 1.5em;
 }
 
-.logements, .commentaires{
-    font-size: 1.2em;
+.logements h3, .commentaires h3{
+    margin: 1em 0;
 }
 
 .logements, .commentaires{
@@ -21,6 +21,7 @@
     flex-direction: column;
     width: 85%;
     margin: auto;
+    font-size: 1.2em;
 }
 
 .logements>div>div{

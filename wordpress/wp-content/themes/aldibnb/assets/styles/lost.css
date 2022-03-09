@@ -1,0 +1,29 @@
+#lost{
+    display: flex;
+    justify-content: space-around;
+    height: 75%;
+}
+
+#lost>div{
+    margin: auto;
+}
+
+#lost>div:first-child{
+    text-align: center;
+}
+
+#lost>div:first-child>h1{
+    font-size: 5em;
+}
+#lost>div:first-child>h2{
+    font-size: 15em;
+}
+
+#lost>div:last-child{
+    font-size: 1.2em;
+}
+
+#lost>div:last-child>p>a{
+   font-weight: 700;
+   text-decoration: underline;
+}

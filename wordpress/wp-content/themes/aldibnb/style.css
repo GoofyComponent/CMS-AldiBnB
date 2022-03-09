@@ -86,6 +86,7 @@ a:hover {
 body{
 	font-family: 'Manrope', sans-serif;
     min-height: 100vh;
+    height: auto;
 }
 
 header{
@@ -107,6 +108,10 @@ header>div:first-child{
 header>div:first-child>a:first-child{
     font-size: 1.5em;
     font-weight: bold;
+}
+
+header>div:first-child>a:last-child{
+    text-align: center;
 }
 
 .nav-menu{

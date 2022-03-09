@@ -24,6 +24,7 @@
         wp_enqueue_style('list-logement', get_template_directory_uri() . '/assets/styles/list-logement.css', array(), $version , 'all');
         wp_enqueue_style('moderator', get_template_directory_uri() . '/assets/styles/moderator.css', array(), $version , 'all');
         wp_enqueue_style('logement-post', get_template_directory_uri() . '/assets/styles/logement-post.css', array(), $version , 'all');
+        wp_enqueue_style('lost', get_template_directory_uri() . '/assets/styles/lost.css', array(), $version , 'all');
         wp_enqueue_style( 'font-awesome-free', 'https://use.fontawesome.com/releases/v6.0.0/css/all.css' );
     }
 
@@ -32,6 +33,7 @@
             'read' => true,
             'edit_published_posts' => false,
             'upload_files' => true,
+            'upload_files' => true,
             'edit_posts' => false,
             'delete_posts' => false,
             'delete_published_posts' => false,
@@ -39,15 +41,20 @@
          );
 		add_role( 'moderator', 'Modérateur', array( 
             'read' => true,
-            'edit_published_posts' => false,
-            'upload_files' => true,
-            'edit_posts' => false,
-            'delete_posts' => false,
-            'delete_published_posts' => false,
-            'edit_others_posts' => true,
-            'delete_others_posts' => true,
+            'delete_posts' => true,
+            'edit_posts' => true,
+            'delete_published_posts' => true,
             'publish_posts' => true,
-            'publish_others_posts' => true,
+            'upload_files' => true,
+            'edit_published_posts' => true,
+            'read_private_page' => true,
+            'edit_private_pages' => true,
+            'delete_private_pages' => true,
+            'read_private_posts' => true,
+            'edit_private_posts' => true,
+            'delete_private_posts' => true,
+            'delete_others_posts' => true,
+            'edit_others_posts' => true,
             'moderate_comments' => true,
             )
         );
