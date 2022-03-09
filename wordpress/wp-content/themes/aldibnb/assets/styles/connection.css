@@ -1,0 +1,43 @@
+#restrict{
+    padding: 13% 0;
+}
+
+#connection{
+    height: 25vh;
+    width: 50%;
+    /*background-color: #E5DDC8;*/
+    background-color: #FFFFFF;
+    margin: auto;
+    padding: 2em;
+    border-radius: 25px;
+}
+
+#connection>div:first-child{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 1em auto;
+}
+
+#connection>div>div{
+    width: 2px;
+    height: 2em;
+    background-color: #3A405A;
+}
+
+#connection>div>a{
+    margin: auto 0;
+    font-weight: bold;
+}
+
+form>div{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 1em auto;
+    text-align: left;
+}
+
+.underline{
+    text-decoration: underline;
+}

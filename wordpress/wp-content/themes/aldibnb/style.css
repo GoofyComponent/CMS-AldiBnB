@@ -4,3 +4,158 @@ Author: Rukraine
 Description: AldiBnB - Rukraine
 Version: 1.0
 */
+
+
+/*          CSS Reset          */
+html,
+body {
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: #DCDDD6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+address,
+big,
+cite,
+code,
+em,
+font,
+img,
+small,
+strike,
+sub,
+sup,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tr,
+th,
+td {
+	border: none;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+	text-align: inherit;
+}
+
+blockquote::before,
+blockquote::after {
+	content: "";
+}
+
+ol, ul, li{
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #3A405A;
+}
+
+a:visited {
+	color: inherit;
+}
+
+a:hover {
+	color: inherit;
+}
+
+/* Font importations */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+/* Basics */
+body{
+	font-family: 'Manrope', sans-serif;
+    min-height: 100vh;
+    height: auto;
+}
+
+header{
+    height: 11vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #DCDDD6;
+    padding-top: 2vh;
+}
+
+header>div:first-child{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    width: 95%;
+}
+
+header>div:first-child>a:first-child{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header>div:first-child>a:last-child{
+    text-align: center;
+}
+
+.nav-menu{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+}
+
+.nav-menu>li{
+    padding: 1em;
+    font-weight: bold;
+}
+
+footer{
+    width: 100%;
+	height: 5vh;
+    padding: 1em 0;
+	background-color: #000000;
+    color: #F5F6F4;
+}
+
+footer>.footer_container{
+	display: flex;
+    justify-content: space-around;
+	width: 65%;
+    margin: auto;
+}
+
+footer>.footer_container>div{
+	border-right: 1px solid #F5F6F4;
+    padding-right: 10%;
+}
+
+footer>.footer_container>div:nth-child(odd){
+    padding-top: 10px;
+}
+
+footer>.footer_container>div:last-child{
+    display: flex;
+    justify-content: space-around;
+	border-right: unset;
+}
+
+footer>.footer_container>div:last-child>div{
+	margin: 0.5em;
+}

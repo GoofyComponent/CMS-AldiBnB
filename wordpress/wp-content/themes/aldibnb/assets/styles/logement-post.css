@@ -1,0 +1,24 @@
+#logement-place, #commentaire{
+    height: 50%;
+}
+
+#logement-place>h2, #commentaire>h2{
+    width: 85%;
+    margin: 1em auto;
+    font-size: 1.5em;
+}
+
+#logement-place>div {
+    display: flex;
+    justify-content: space-around;
+    width: 85%;
+}
+
+#logement-place>div>div>img {
+    border-radius: 50px;
+    width: 100%;
+}
+
+#commentaire{
+   
+}

@@ -1,0 +1,59 @@
+.fat{
+    font-weight: 700;
+}
+
+.italic{
+    font-style: italic;
+}
+
+#moderator-page>h2{
+    width: 85%;
+    margin: 1em auto;
+    font-size: 1.5em;
+}
+
+.logements h3, .commentaires h3{
+    margin: 1em 0;
+}
+
+.logements, .commentaires{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: auto;
+    font-size: 1.2em;
+}
+
+.logements>div>div{
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    width: 100%;
+    align-items: center;
+    border: solid 1px;
+}
+
+.logements>div>div>div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.logements>div>div>div>img{
+    border-radius: 50px;
+    height: 95% !important;
+    width: auto;
+}
+
+.logements>div>div>div>p{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.logements>div>div>div>img, .logements>div>div>div>p, .logements>div>div>div>a{
+    margin: 0 1em;
+}
+
+
+
