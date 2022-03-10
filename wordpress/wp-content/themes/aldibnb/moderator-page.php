@@ -7,6 +7,15 @@
     if(!current_user_can('administrator') && !current_user_can('moderator')){
         wp_redirect(home_url());
     }
+
+    if($_POST){
+        if($_POST['action_commentaires'] == 'delete'){
+            wp_delete_comment($_POST['comment_id']);
+        }
+        else if($_POST['action_commentaires'] == 'approve'){
+            wp_set_comment_status($_POST['comment_id'], 'approve');
+        }
+    }
 ?>
 <?php get_header(); ?>
 <section id="moderator-page">
@@ -29,7 +38,7 @@
                 <div>
                     <?php the_post_thumbnail('medium'); ?>
                     <p>
-                        <span class="fat"> <?php the_title(); ?></span> <span class="italic"> par
+                        <span class="fat"> <?php the_title(); ?></span> par <span class="italic">
                             <?php the_author(); ?></span>
                     </p>
                 </div>
@@ -72,12 +81,28 @@
                     foreach($comments as $comment){
                         ?>
         <div>
-            <p>
-                <?php echo $comment->comment_author; ?>
-            </p>
-            <p>
-                <?php echo $comment->comment_content; ?>
-            </p>
+            <div>
+                <div>
+                    <p>
+                        <span class="fat"> <?php echo $comment->comment_content; ?></span> par <span class="italic">
+                            <?php echo $comment->comment_author; ?></span> le <span
+                            class="underline"><?php echo $comment->comment_date; ?></span>
+                    </p>
+                </div>
+                <div>
+                    <form action="" method="post">
+                        <input type="hidden" name="action_commentaires" value="approve">
+                        <input type="hidden" name="id" value="<?php the_ID(); ?>">
+                        <input type="hidden" name="comment_id" value="<?php echo $comment->comment_ID; ?>">
+                        <input type="submit" class="button" name="publish" value="Approuver le commentaire" />
+                    </form>
+                    <form action="" method="post">
+                        <input type="hidden" name="action_commentaires" value="delete">
+                        <input type="hidden" name="comment_id" value="<?php echo $comment->comment_ID; ?>">
+                        <input type="submit" class="button" name="publish" value="Supprimer le commentaire" />
+                    </form>
+                </div>
+            </div>
         </div>
         <?php
                     }

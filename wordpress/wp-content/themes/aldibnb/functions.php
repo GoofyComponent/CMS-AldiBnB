@@ -94,28 +94,6 @@
     
     }
 
-	function aldibnb_create_user(){
-		if(isset($_POST['email']) && isset($_POST['pwd'])){
-			$mail = $_POST['email'];
-			$pwd = $_POST['pwd'];
-			$usr = $_POST['usr'];
-			$user_id = wp_insert_user( array(
-				'user_login' => $usr,
-				'user_pass' => $pwd,
-				'user_email' => $mail,
-				'first_name' => '',
-				'last_name' => '',
-				'display_name' => '',
-				'role' => 'user'
-			  ));
-			if(is_wp_error($user_id)){ 
-			}else{ 
-			}
-		}
-        echo 'bruhhh';
-		die();
-	}
-
     function aldibnb_create_logement(){
         if(isset($_POST['titre']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['adresse']) && isset($_POST['ville']) && isset($_POST['cp']) && isset($_POST['pays']) ){
             $title = $_POST['titre'];
