@@ -22,11 +22,10 @@
     <h2>Modération</h2>
     <div class="logements">
         <h3>Logement</h3>
-        <!--- Get all private private post from all users -->
         <?php 
             $args = array(
                 'post_type' => 'Logement',
-                'post_status' => 'pending'
+                'post_status' => 'attente-moderation',
             );
             $logements = new WP_Query($args);
             if($logements->have_posts()){
@@ -108,5 +107,8 @@
                     }
                 }
             ?>
+        <?php if(!$comments){ ?>
+        <p>Aucun commentaire en attente de modération</p>
+        <?php } ?>
     </div>
     <?php get_footer(); ?>

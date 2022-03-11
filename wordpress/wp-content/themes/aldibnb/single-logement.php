@@ -2,11 +2,11 @@
     if($_POST){
         if($_POST["create_comment"]){
             $good = wp_insert_comment(array(
-                "comment_post_ID" => $_POST["logement_id"],
-                "user_id" => $_POST["user_id"],
-                "comment_author" => $_POST["author"],
-                "comment_author_email" => $_POST["email"],
-                "comment_content" => $_POST["comment"],
+                "comment_post_ID" => htmlspecialchars($_POST["logement_id"]),
+                "user_id" => htmlspecialchars($_POST["user_id"]),
+                "comment_author" => htmlspecialchars($_POST["author"]),
+                "comment_author_email" => htmlspecialchars($_POST["email"]),
+                "comment_content" => htmlspecialchars($_POST["comment"]),
                 "comment_approved" => 0
             ));
 
@@ -18,14 +18,22 @@
             }
         }
     }
+
+    $status = get_post_status(get_the_ID());
+    $current_user = wp_get_current_user();
+    $user_roles = $current_user->roles;
+    $user_role = array_shift($user_roles);
+                
+    if($status === "attente-moderation" && (!current_user_can('administrator') && !current_user_can('moderator'))){
+        echo "<script>window.location.href = '".home_url()."';</script>";
+    }
 ?>
 
 <?php get_header(); ?>
 
-<!---
- display the current logemement
--->
+
 <section id="logement-place">
+
     <?php 
         $args = array(
             'post_type' => 'Logement',
@@ -51,10 +59,27 @@
             <p>
                 <?php the_content(); ?>
             </p>
-            <p><?php echo get_post_meta(get_the_ID(), 'price', true); ?></p>
+            <p>Prix : <?php echo get_post_meta(get_the_ID(), 'price', true); ?>€</p>
             <p>Pays : <?php echo get_post_meta(get_the_ID(), 'country', true); ?></p>
         </div>
     </div>
+    <?php if($status === "attente-moderation"){ ?>
+    <section class="btn-modera">
+        <form action="<?php echo admin_url('admin-post.php')  ?>" method="post">
+            <input type="hidden" name="action" value="change_status">
+            <input type="hidden" name="id" value="<?php the_ID(); ?>">
+            <input type="hidden" name="status" value="publish">
+            <?php wp_nonce_field('change_status', 'change_status_nonce'); ?>
+            <input type="submit" class="button" name="publish" value="Approuver le logement" />
+        </form>
+        <form action="<?php echo admin_url('admin-post.php')  ?>" method="post">
+            <input type="hidden" name="action" value="delete_post">
+            <input type="hidden" name="id" value="<?php the_ID(); ?>">
+            <?php wp_nonce_field('delete_post', 'delete_post_nonce'); ?>
+            <input type="submit" class="button" name="publish" value="Supprimer le logement" />
+        </form>
+    </section>
+    <?php } ?>
     <?php
             }
         }
@@ -84,6 +109,9 @@
                 }
             }
         ?>
+        <?php if((!$comments) || (!is_user_logged_in())){ ?>
+        <p>Aucun commentaire n'a été publié pour le moment.</p>
+        <?php } ?>
     </div>
     <?php if(is_user_logged_in() && comments_open()){ ?>
     <form action="" method="post" class="comment-form">

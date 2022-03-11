@@ -6,14 +6,14 @@
     font-style: italic;
 }
 
+#moderator-page{
+    min-height: 75vh;
+}
+
 #moderator-page>h2{
     width: 85%;
     margin: 1em auto;
     font-size: 1.5em;
-}
-
-#moderator-page>{
-    min-height: 75vh;
 }
 
 .logements h3, .commentaires h3{

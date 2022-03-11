@@ -18,9 +18,9 @@
 
 <?php 
 if($_POST){
-    $mail = $_POST['email'];
-	$pwd = $_POST['pwd'];
-	$usr = $_POST['usr'];
+    $mail = htmlspecialchars($_POST['email']) ;
+	$pwd = htmlspecialchars($_POST['pwd']);
+	$usr = htmlspecialchars($_POST['usr']);
     $user_id = wp_insert_user( array(
 		'user_login' => $usr,
 		'user_pass' => $pwd,

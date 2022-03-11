@@ -11,15 +11,21 @@
     <header>
         <div>
             <a href="/">ALDI'NB</a>
-            <a href="/login">
-                <i class="fa-solid fa-circle-user fa-2x"></i>
-                <p>
-                    <?php
+            <?php if (is_user_logged_in()) : ?>
+            <a href="/account">
+                <?php else: ?>
+                <a href="/login">
+                    <?php endif ?>
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <?php if (is_user_logged_in()) : ?>
+                    <p>
+                        <?php
                         $current_user = wp_get_current_user();
                         echo $current_user->user_login;
                     ?>
-                </p>
-            </a>
+                    </p>
+                    <?php endif; ?>
+                </a>
         </div>
         <nav>
             <?php 
