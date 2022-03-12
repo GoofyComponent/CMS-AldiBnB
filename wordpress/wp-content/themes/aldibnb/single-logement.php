@@ -1,6 +1,7 @@
 <?php 
     if($_POST){
         if($_POST["create_comment"]){
+            if(isset($_POST["logement_id"]) && isset($_POST["user_id"])&& isset($_POST["author"])&& isset($_POST["author"])&& isset($_POST["email"])&& isset($_POST["comment"])){
             $good = wp_insert_comment(array(
                 "comment_post_ID" => htmlspecialchars($_POST["logement_id"]),
                 "user_id" => htmlspecialchars($_POST["user_id"]),
@@ -12,10 +13,16 @@
 
             if($good){
                 $good="success";
+                unset($_POST["create_comment"]);
+                unset($_POST["logement_id"]);
+                unset($_POST["user_id"]);
+                unset($_POST["author"]);
+                unset($_POST["email"]);
+                unset($_POST["comment"]);
             }
             else{
                 $good="error";
-            }
+            }}
         }
     }
 
@@ -55,10 +62,10 @@
             <?php the_post_thumbnail('large'); ?>
         </div>
         <div>
-            <p> <?php the_title(); ?> de <?php the_author(); ?></p>
-            <p>
+            <p> <?php the_title(); ?> <span class="italic"> de <?php the_author(); ?> </span></p>
+            <div>
                 <?php the_content(); ?>
-            </p>
+            </div>
             <p>Prix : <?php echo get_post_meta(get_the_ID(), 'price', true); ?>€</p>
             <p>Pays : <?php echo get_post_meta(get_the_ID(), 'country', true); ?></p>
         </div>

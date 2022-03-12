@@ -26,8 +26,10 @@
             $args = array(
                 'post_type' => 'Logement',
                 'post_status' => 'attente-moderation',
+                'posts_per_page'=>-1
             );
             $logements = new WP_Query($args);
+
             if($logements->have_posts()){
                 while($logements->have_posts()){
                     $logements->the_post();
