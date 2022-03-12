@@ -1,24 +1,107 @@
 #logement-place, #commentaire{
-    height: 50%;
+    width: 90%;
+    margin: 1em auto;
 }
 
-#logement-place>h2, #commentaire>h2{
-    width: 85%;
-    margin: 1em auto;
+#logement-place{
+    min-height: 70vh;
+}
+
+#logement-place>div:first-child{
+    display: flex;
+    justify-content: flex-start;
+}
+
+#logement-place>div:first-child>h2, #logement-place>div:first-child>p{
+    margin: 1em;
+}
+
+#logement-place>div:first-child>p{
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+#logement-place>div:first-child>h2{
+    font-weight: 300;
+    font-size: 2.5em;
+    font-style: italic;
+}
+
+#logement-place>div:nth-child(2){
+    display: flex;
+    justify-content: space-around;
+}
+
+#logement-place>div:nth-child(2)>div:first-child{
+    max-width: 35%;
+}
+
+#logement-place>div:nth-child(2)>:last-child{
+    margin: auto 0;
+    width: 35%;
+}
+
+#logement-place>div:nth-child(2)>:last-child>p, #logement-place>div:nth-child(2)>:last-child>div{
     font-size: 1.5em;
 }
 
-#logement-place>div {
-    display: flex;
-    justify-content: space-around;
-    width: 85%;
+#logement-place>div:nth-child(2)>:last-child>div{
+    overflow-y: auto;
+    height: 43vh;
 }
 
-#logement-place>div>div>img {
-    border-radius: 50px;
+
+#logement-place>div:nth-child(2)>:last-child>p:first-child{
+    font-size: 2em !important;
+}
+
+.comment-container>div{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin: 0.5em auto;
+    padding: 1em;
+    border-bottom: 2px solid;
+}
+
+.comment-container>div:last-child{
+    border-bottom: none;
+}
+
+.comment-container>div>p:first-child{
+    text-align: left;
+}
+.comment-container>div>p:last-child{
+    text-align: right;
+    max-width: 90%;
+    margin: 0 0 0 auto;
+}
+
+.comment-form, .response{
+    display: flex;
+    width: 45%;
+    margin: auto;
+}
+
+.comment-form>.textarea-cont{
     width: 100%;
 }
 
-#commentaire{
-   
+.comment-form>.textarea-cont>textarea{
+    width: 100%;
+}
+
+.comment-form>div:last-child>input{
+    margin: 0 0 0 auto;
+}
+
+.yarien{
+    margin: 0.5em 0;
+}
+
+.btn-modera{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 0 0 auto;
 }

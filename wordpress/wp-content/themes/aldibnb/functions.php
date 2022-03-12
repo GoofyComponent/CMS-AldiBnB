@@ -12,7 +12,7 @@
             'random-nav' => 'Navigation for random users',
             'footer-nav' => 'Navigation footer'
         );
-
+        
         register_nav_menus($locations);
     }
 
@@ -25,6 +25,7 @@
         wp_enqueue_style('moderator', get_template_directory_uri() . '/assets/styles/moderator.css', array(), $version , 'all');
         wp_enqueue_style('logement-post', get_template_directory_uri() . '/assets/styles/logement-post.css', array(), $version , 'all');
         wp_enqueue_style('lost', get_template_directory_uri() . '/assets/styles/lost.css', array(), $version , 'all');
+        wp_enqueue_style('account', get_template_directory_uri() . '/assets/styles/account.css', array(), $version , 'all');
         wp_enqueue_style( 'font-awesome-free', 'https://use.fontawesome.com/releases/v6.0.0/css/all.css' );
     }
 
@@ -47,15 +48,15 @@
             'publish_posts' => true,
             'upload_files' => true,
             'edit_published_posts' => true,
-            'read_private_page' => true,
-            'edit_private_pages' => true,
-            'delete_private_pages' => true,
             'read_private_posts' => true,
             'edit_private_posts' => true,
             'delete_private_posts' => true,
             'delete_others_posts' => true,
             'edit_others_posts' => true,
             'moderate_comments' => true,
+            'edit_comment' => true,
+            'edit_posts' => true,
+            'edit_others_posts' => true,
             )
         );
 	}
@@ -75,7 +76,6 @@
             'not_found'           => __( 'Non trouvée'),
             'not_found_in_trash'  => __( 'Non trouvée dans la corbeille'),
         );
-        
         $args = array(
             'label'               => __( 'Logement'),
             'description'         => __( 'Tous sur Logement'),
@@ -88,49 +88,36 @@
             'rewrite'			  => array( 'slug' => 'Logement'),
     
         );
-        
        
         register_post_type( 'logement', $args );
-    
     }
 
-	function aldibnb_create_user(){
-		if(isset($_POST['email']) && isset($_POST['pwd'])){
-			$mail = $_POST['email'];
-			$pwd = $_POST['pwd'];
-			$usr = $_POST['usr'];
-			$user_id = wp_insert_user( array(
-				'user_login' => $usr,
-				'user_pass' => $pwd,
-				'user_email' => $mail,
-				'first_name' => '',
-				'last_name' => '',
-				'display_name' => '',
-				'role' => 'user'
-			  ));
-			if(is_wp_error($user_id)){ 
-			}else{ 
-			}
-		}
-        echo 'bruhhh';
-		die();
-	}
+    function aldibnb_customs_posts_status(){
+        register_post_status( 'attente-moderation', array(
+            'label'                     => _x( 'Attente de moderation', 'Logement' ),
+            'public'                    => true,
+            'exclude_from_search'       => false,
+            'show_in_admin_all_list'    => true,
+            'show_in_admin_status_list' => true,
+            'label_count'               => _n_noop( 'Attente de moderation <span class="count">(%s)</span>', 'attente de moderation <span class="count">(%s)</span>' ),
+        ) );
+    }
 
     function aldibnb_create_logement(){
         if(isset($_POST['titre']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['adresse']) && isset($_POST['ville']) && isset($_POST['cp']) && isset($_POST['pays']) ){
-            $title = $_POST['titre'];
-            $description = $_POST['description'];
-            $price = $_POST['prix'];
-            $address = $_POST['adresse'];
-            $city = $_POST['ville'];
-            $zipcode = $_POST['cp'];
-            $country = $_POST['pays'];
-            $image = $_POST['image'];
-            $user_id = $_POST['author'];
+            $title = htmlspecialchars($_POST['titre']);
+            $description = htmlspecialchars($_POST['description']);
+            $price = htmlspecialchars($_POST['prix']);
+            $address = htmlspecialchars($_POST['adresse']);
+            $city = htmlspecialchars($_POST['ville']);
+            $zipcode = htmlspecialchars($_POST['cp']);
+            $country = htmlspecialchars($_POST['pays']);
+            $image = htmlspecialchars($_POST['image']);
+            $user_id = htmlspecialchars($_POST['author']);
             $post_id = wp_insert_post(array(
                 'post_title' => $title,
                 'post_content' => $description,
-                'post_status' => 'pending',
+                'post_status' => 'attente-moderation',
                 'post_author' => $user_id,
                 'post_type' => 'logement',
                 'comment_status' => 'open',
@@ -159,8 +146,8 @@
 
     function aldibnb_change_status(){;
         if(isset($_POST['id']) && isset($_POST['status'])){
-            $id = $_POST['id'];
-            $status = $_POST['status'];
+            $id = htmlspecialchars($_POST['id']);
+            $status = htmlspecialchars($_POST['status']);
             $post_id = wp_update_post(array(
                 'ID' => $id,
                 'post_status' => $status
@@ -176,7 +163,7 @@
 
     function aldibnb_delete_post(){
         if(isset($_POST['id'])){
-            $id = $_POST['id'];
+            $id = htmlspecialchars($_POST['id']);
             $post_id = wp_delete_post($id);
             if(!is_wp_error($post_id)){
                 wp_redirect('/moderator');
@@ -187,14 +174,22 @@
         }
     }
 
+    function remove_admin_bar() {
+        if (!current_user_can('administrator') && !is_admin()) {
+          show_admin_bar(false);
+        }
+      }
+
     add_action('init', 'aldibnb_menus');
     add_action('init', 'aldibnb_custom_post_type', 0);
 	add_action('init', 'aldibnb_customs_role');
-    add_action('after_setup_theme', 'aldibnb_setup');
+    add_action( 'init', 'aldibnb_customs_posts_status' );
     add_action('wp_enqueue_scripts', 'aldibnb_register_styles');
 	add_action('admin_post_create_user', 'aldibnb_create_user');
     add_action('admin_post_create_logement', 'aldibnb_create_logement');
     add_action('admin_post_change_status', 'aldibnb_change_status');
     add_action('admin_post_delete_post', 'aldibnb_delete_post');
+    add_action('after_setup_theme', 'remove_admin_bar');
+    add_action('after_setup_theme', 'aldibnb_setup');
 
 ?>

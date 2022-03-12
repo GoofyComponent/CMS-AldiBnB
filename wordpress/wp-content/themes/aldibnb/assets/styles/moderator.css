@@ -6,6 +6,10 @@
     font-style: italic;
 }
 
+#moderator-page{
+    min-height: 75vh;
+}
+
 #moderator-page>h2{
     width: 85%;
     margin: 1em auto;
@@ -24,7 +28,7 @@
     font-size: 1.2em;
 }
 
-.logements>div>div{
+.logements>div>div, .commentaires>div>div{
     display: flex;
     justify-content: space-between;
     height: 8vh;
@@ -33,7 +37,7 @@
     border: solid 1px;
 }
 
-.logements>div>div>div{
+.logements>div>div>div, .commentaires>div>div>div{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -46,12 +50,12 @@
     width: auto;
 }
 
-.logements>div>div>div>p{
+.logements>div>div>div>p, .commentaires>div>div>div>p{
     font-size: 16px;
     font-weight: 500;
 }
 
-.logements>div>div>div>img, .logements>div>div>div>p, .logements>div>div>div>a{
+.logements>div>div>div>img, .logements>div>div>div>p, .logements>div>div>div>a, .commentaires>div>div>div>p, .commentaires>div>div>div>a{
     margin: 0 1em;
 }
 

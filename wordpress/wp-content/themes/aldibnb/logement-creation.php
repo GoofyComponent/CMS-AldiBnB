@@ -20,35 +20,35 @@
             <input type="hidden" name="author" value="<?php echo get_current_user_id(); ?>">
             <div>
                 <label for="titre">Titre</label>
-                <input type="text" name="titre" id="titre" placeholder="titre" />
+                <input type="text" name="titre" id="titre" placeholder="titre" required />
             </div>
             <div>
                 <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Description"></textarea>
+                <textarea name="description" id="description" placeholder="Description" required></textarea>
             </div>
             <div>
                 <label for="prix">prix</label>
-                <input type="text" name="prix" id="prix" placeholder="prix" />
+                <input type="text" name="prix" id="prix" placeholder="prix" required />
             </div>
             <div>
                 <label for="adresse">adresse</label>
-                <input type="text" name="adresse" id="adresse" placeholder="adresse" />
+                <input type="text" name="adresse" id="adresse" placeholder="adresse" required />
             </div>
             <div>
                 <label for="ville">Ville</label>
-                <input type="text" name="ville" id="ville" placeholder="ville" />
+                <input type="text" name="ville" id="ville" placeholder="ville" required />
             </div>
             <div>
                 <label for="cp">Code Postal</label>
-                <input type="text" name="cp" id="cp" placeholder="cp" />
+                <input type="text" name="cp" id="cp" placeholder="cp" required />
             </div>
             <div>
                 <label for="pays">Pays</label>
-                <input type="text" name="pays" id="pays" placeholder="pays" />
+                <input type="text" name="pays" id="pays" placeholder="pays" required />
             </div>
 
             <div>
-                <input type="file" name="thumbnail" id='thumbnail' multiple="false">
+                <input type="file" name="thumbnail" id='thumbnail' multiple="false" required>
             </div>
 
             <?php wp_nonce_field('create_logement', 'create_logement_nonce'); ?>

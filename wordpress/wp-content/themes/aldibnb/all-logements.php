@@ -1,20 +1,16 @@
 <?php 
     /*
-        Template Name: User Page
+        Template Name: All logements
     */ 
-    if(!is_user_logged_in()){
-        wp_redirect(home_url());
-    }
 ?>
 
 <?php get_header(); ?>
 <section id="user-place">
-    <h2>Vos logements</h2>
+    <h2>Les logements</h2>
     <div>
         <?php 
             $args = array(
                 'post_type' => 'Logement',
-                'author' => get_current_user_id(),
                 'post_status' => 'publish'
             );
             $logements = new WP_Query($args);
@@ -35,7 +31,7 @@
             }
         ?>
         <?php if(!$logements->have_posts()){ ?>
-        <p>Vous n'avez encore aucun logement approuvé.</p>
+        <p class="yarien">Aucun logement n'est pour le moment proposé.</p>
         <?php } ?>
     </div>
 

@@ -13,7 +13,7 @@ services:
             WORDPRESS_DB_NAME: exampledb
         volumes:
             - ./wordpress:/var/www/html
-            - ./DumpSQL/data.sql:/docker-entrypoint-initdb.d/data.sql
+            - ./DumpSQL/exampledb.sql:/docker-entrypoint-initdb.d/exampledb.sql
 
     db:
         image: mariadb
