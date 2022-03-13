@@ -122,6 +122,8 @@
                 'post_type' => 'logement',
                 'comment_status' => 'open',
                 'meta_input' => array(
+                    'title' => $title,
+                    'description' => $description,
                     'price' => $price,
                     'address' => $address,
                     'city' => $city,

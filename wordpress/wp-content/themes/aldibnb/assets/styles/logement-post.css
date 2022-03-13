@@ -105,3 +105,38 @@
     width: 50%;
     margin: 0 0 0 auto;
 }
+
+@media only screen and (max-width: 1023px) {
+
+    #logement-place {
+        min-height: 64vh;
+    }
+
+    #logement-place>div:first-child {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comment-container>div {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0.5em auto;
+        padding: 1em;
+        border-bottom: 2px solid;
+    }
+    
+    #logement-place>div:first-child>h2, #logement-place>div:first-child>p {
+        margin: 0.5em;
+    }
+
+    #logement-place>div:nth-child(2)>:last-child>div {
+        overflow-y: auto;
+        height: 20vh;
+    }
+
+    #logement-place>div:nth-child(2)>:last-child>p, #logement-place>div:nth-child(2)>:last-child>div {
+        font-size: 1.3em;
+    }
+
+  }

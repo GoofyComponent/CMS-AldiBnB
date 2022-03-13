@@ -1,19 +1,15 @@
 <?php get_header(); ?>
 
-<section id="search_field">
+
+<form action="/recherche" id="search_field">
     <div>
-        <input type="text" placeholder="Destination" name="destination" id="destination" />
-    </div>
-    <div>
-        <input type="text" placeholder="Date" name="date" id="date" />
-    </div>
-    <div>
-        <input type="text" placeholder="Nombre de personnes" name="nb_personnes" id="nb_personnes" />
+        <input type="text" placeholder="Mot-Clé" name="keyword" id="keyword" />
     </div>
     <div>
         <input type="submit" value="Rechercher" id="search_button" />
     </div>
-</section>
+</form>
+
 
 <section id="explications">
     <div class="image_type">
@@ -55,19 +51,7 @@
 <section id="location_idea">
     <h2>Inspirations pour votre prochaine destination</h2>
     <div class="location">
-        <?php if(have_posts()): ?>
-        <?php while(have_posts()): the_post(); ?>
-        <div class="block">
-            <div class="image">
-                <img src="<?php the_post_thumbnail_url(); ?>" />
-            </div>
-            <div class="text">
-                <h3><?php the_title(); ?></h3>
-                <?php the_content(); ?>
-            </div>
-        </div>
-        <?php endwhile; ?>
-        <?php endif; ?>
+        <?php slider_show(); ?>
     </div>
 </section>
 

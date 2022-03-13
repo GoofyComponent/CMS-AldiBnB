@@ -61,3 +61,37 @@
 
 
 
+
+@media only screen and (max-width: 1023px) {
+
+    #moderator-page{
+        margin: 1em 0;
+    }
+
+    .logements>div>div, .commentaires>div>div {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        align-items: center;
+        border: solid 1px;
+    }
+
+    .logements>div>div>div>img, .logements>div>div>div>p, .logements>div>div>div>a, .commentaires>div>div>div>p, .commentaires>div>div>div>a {
+        font-size: 1em;
+    }
+    
+    .logements>div>div>div, .commentaires>div>div>div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .logements>div>div>div>form>input[type="submit"],.commentaires>div>div>div>form>input[type="submit"]{
+        font-size: 0.9em;
+        margin: 0.5em;
+    }
+    
+
+  }

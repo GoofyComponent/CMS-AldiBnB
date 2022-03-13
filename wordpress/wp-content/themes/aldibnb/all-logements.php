@@ -11,7 +11,8 @@
         <?php 
             $args = array(
                 'post_type' => 'Logement',
-                'post_status' => 'publish'
+                'post_status' => 'publish',
+                'posts_per_page'=>-1
             );
             $logements = new WP_Query($args);
             if($logements->have_posts()){
